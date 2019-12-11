@@ -9,7 +9,6 @@ module Day1
     part2
     ) where
 
-import System.Environment
 import System.IO
 import Data.String
 
