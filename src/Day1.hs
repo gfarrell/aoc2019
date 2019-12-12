@@ -11,6 +11,7 @@ module Day1
 
 import System.IO
 import Data.String
+import Util
 
 mass_to_fuel :: Integer -> Integer
 mass_to_fuel n
@@ -29,12 +30,6 @@ total_fuel n
 total_ship_fuel :: [Integer] -> Integer
 total_ship_fuel [] = 0
 total_ship_fuel (x:xs) = (total_fuel x) + (total_ship_fuel xs)
-
-lines_to_list :: String -> [Integer]
-lines_to_list t = map readInt . lines $ t
-
-readInt :: String -> Integer
-readInt = read
 
 part1 :: String -> IO ()
 part1 f = do

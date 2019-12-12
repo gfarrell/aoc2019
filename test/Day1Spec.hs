@@ -31,9 +31,3 @@ spec = do
       total_fuel 14 `shouldBe` (2)
       total_fuel 1969 `shouldBe` (966)
       total_fuel 100756 `shouldBe` (50346)
-
-  describe "lines_to_list" $ do
-    it "converts a newline separated list of number to a list of Integers" $ do
-      let txt = "12\n42\n96\n2712\n314159"
-          exp = [12, 42, 96, 2712, 314159]
-      lines_to_list txt `shouldBe` exp
