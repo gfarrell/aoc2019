@@ -1,4 +1,4 @@
-module Day2 (run, has, validate, splice) where
+module Day2 (run, has, validate, reset1202, part1) where
 
 import Util
 
@@ -35,4 +35,12 @@ iter i mem
         out = toInt (mem !! (i + 3))
     in iter (i + 4) $ splice (op a b) out $ mem
   | otherwise = mem
+
+reset1202 :: [Integer] -> [Integer]
+reset1202 xs = splice 12 1 . splice 2 2 $ xs
+
+part1 :: String -> IO ()
+part1 f = do
+  xs <- readFile f
+  print $ "Day 2 / part 1: " ++ (show . run . reset1202 . map readInt . split (==',') $ xs)
 

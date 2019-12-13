@@ -30,3 +30,7 @@ spec = do
       shouldBe (validate [2,3,0,3,99]) (True)
       shouldBe (validate [2,4,4,5,99,0]) (True)
       shouldBe (validate [1,1,1,4,99,5,6,0,99]) (True)
+
+  describe "reset1202" $ do
+    it "replaces memory slots" $ do
+      shouldBe (reset1202 [1, 1, 1, 1, 1]) ([1, 12, 2, 1, 1])

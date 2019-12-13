@@ -16,6 +16,14 @@ spec = do
     it "replaces an element at the given index" $ do
       shouldBe (splice 42 2 [1, 2, 3, 4, 5]) ([1, 2, 42, 4, 5])
 
+  describe "split" $ do
+    it "splits a string given a predicate" $ do
+      shouldBe (split (==',') "hello,goodbye") (["hello", "goodbye"])
+    it "returns an empty array for an empty string" $ do
+      shouldBe (split (==',') "") ([])
+    it "handles dangling delimiters properly" $ do
+      shouldBe (split (==',') "hello,world,") (["hello", "world"])
+
   describe "lines_to_list" $ do
     it "converts a newline separated list of number to a list of Integers" $ do
       let txt = "12\n42\n96\n2712\n314159"
