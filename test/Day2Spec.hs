@@ -31,6 +31,18 @@ spec = do
       shouldBe (validate [2,4,4,5,99,0]) (True)
       shouldBe (validate [1,1,1,4,99,5,6,0,99]) (True)
 
-  describe "reset1202" $ do
+  describe "with_inputs" $ do
     it "replaces memory slots" $ do
-      shouldBe (reset1202 [1, 1, 1, 1, 1]) ([1, 12, 2, 1, 1])
+      shouldBe (with_inputs (12, 2) [1, 1, 1, 1, 1]) ([1, 12, 2, 1, 1])
+
+  describe "test_inputs" $ do
+    it "runs a programme with given inputs and returns the value in #0" $ do
+      let mem = [1, 0, 0, 0, 99, 6, 9, 12] in do
+        shouldBe (test_inputs (4, 5) mem) (105)
+        shouldBe (test_inputs (6, 3) mem) (9)
+        shouldBe (test_inputs (6, 7) mem) (21)
+
+  describe "seek" $ do
+    it "finds the pair of inputs to a programme that give a target number" $ do
+      let mem = [1, 0, 0, 3, 2, 3, 11, 0, 99, 30, 40, 50] in do
+        shouldBe (seek 3500 mem) (Just (10, 9))
